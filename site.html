@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTuber Profissional em 7 Dias</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px;
+            color: white;
+            animation: fadeInDown 1s ease;
+        }
+
+        h1 {
+            font-size: 3em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitle {
+            font-size: 1.5em;
+            opacity: 0.95;
+            margin-bottom: 10px;
+        }
+
+        .guarantee {
+            display: inline-block;
+            background: #ffd700;
+            color: #333;
+            padding: 10px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            margin-top: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        .video-section {
+            background: #1a1a1a;
+            border-radius: 20px;
+            padding: 40px;
+            margin: 40px 0;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+            animation: fadeInUp 1s ease;
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .audio-toggle {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            border: 2px solid #0a010100;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-size: 1em;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+            backdrop-filter: blur(10px);
+        }
+
+        .audio-toggle:hover {
+            background: rgba(0, 0, 0, 0);
+            transform: scale(1.05);
+        }
+
+        .audio-toggle.active {
+            background: rgba(0, 0, 0, 0);
+            border-color: #ffd90000;
+        }
+
+        .cta-section {
+            text-align: center;
+            padding: 60px 20px;
+            animation: fadeInUp 1.2s ease;
+        }
+
+        .price {
+            font-size: 3em;
+            color: white;
+            font-weight: bold;
+            margin: 30px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            opacity: 0.7;
+            font-size: 0.5em;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        /* 🔗 LINKS DE COMPRA - ALTERE AQUI 🔗 */
+        .buy-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #89ff6b, #73ee5a);
+            color: white;
+            padding: 25px 60px;
+            font-size: 1.5em;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 50px;
+            margin: 10px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(112, 255, 107, 0.4);
+            cursor: pointer;
+            border: none;
+        }
+
+        .buy-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(107, 255, 119, 0.6);
+        }
+
+        .benefits {
+            background: #1a1a1a;
+            border-radius: 20px;
+            padding: 60px 40px;
+            margin: 40px 0;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+        }
+
+        .benefits h2 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 50px;
+            color: #ffd700;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .benefit-card {
+            background: linear-gradient(135deg, #abb4ac5e 0%, #abafab56 100%);
+            padding: 30px;
+            border-radius: 15px;
+            color: white;
+            transition: transform 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .benefit-card h3 {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        .guarantee-section {
+            text-align: center;
+            background: #1a1a1a;
+            padding: 40px;
+            border-radius: 20px;
+            margin: 40px 0;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.8);
+        }
+
+        .guarantee-badge {
+            font-size: 4em;
+            margin-bottom: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            color: white;
+            opacity: 0.9;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+            .subtitle {
+                font-size: 1.2em;
+            }
+            .price {
+                font-size: 2em;
+            }
+            .buy-button {
+                padding: 20px 40px;
+                font-size: 1.2em;
+            }
+            .audio-toggle {
+                padding: 10px 20px;
+                font-size: 0.9em;
+                bottom: 15px;
+                right: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎬 Torne-se um YouTuber Profissional</h1>
+            <p class="subtitle">Aprenda a criar, editar e monetizar seu canal em tempo recorde</p>
+            <div class="guarantee">✅ 7 DIAS DE GARANTIA TOTAL</div>
+        </header>
+
+        <div class="video-section">
+            <h2 style="text-align: center; margin-bottom: 30px; color: #ffd700; font-size: 2em;">
+                Assista a Apresentação do Curso
+            </h2>
+            <div class="video-container">
+                <iframe 
+                    id="videoPlayer"
+                    src="https://www.youtube.com/embed/OhujnycSKU0?autoplay=1&mute=0&controls=0&disablekb=1&fs=0&modestbranding=1&rel=0&enablejsapi=1" 
+                    title="YouTube video player" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+                <button id="audioToggle" class="audio-toggle active" onclick="toggleAudio()">
+                    🔊 Desativar Áudio
+                </button>
+            </div>
+        </div>
+
+        <div class="benefits">
+            <h2>O Que Você Vai Aprender</h2>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h3>🎥 Criação de Conteúdo</h3>
+                    <p>Aprenda a criar vídeos envolventes que prendem a atenção do público desde o primeiro segundo</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>✂️ Edição Profissional</h3>
+                    <p>Domine técnicas de edição que farão seus vídeos parecerem produções hollywoodianas</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>💰 Monetização</h3>
+                    <p>Descubra todas as formas de ganhar dinheiro com seu canal do YouTube</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>📈 Crescimento Rápido</h3>
+                    <p>Estratégias comprovadas para fazer seu canal crescer de forma orgânica e acelerada</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>🎯 SEO para YouTube</h3>
+                    <p>Otimize seus vídeos para aparecer nas primeiras posições de busca</p>
+                </div>
+                <div class="benefit-card">
+                    <h3>🤝 Comunidade Exclusiva</h3>
+                    <p>Acesso a grupo VIP com suporte e networking com outros YouTubers</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2 style="color: white; font-size: 2.5em; margin-bottom: 20px;">
+                Oferta Especial por Tempo Limitado!
+            </h2>
+            <div class="price">
+                <span class="old-price">De R$ 997,00</span>
+                R$ 297,00
+            </div>
+            
+            <!-- 🔗 ALTERE O LINK AQUI - Substitua o # pelo seu link de pagamento 🔗 -->
+            <a href="https://pay.kiwify.com.br/obJH06a?afid=a7cTNs9z" class="buy-button" onclick="comprar()">
+                🚀 QUERO COMEÇAR AGORA!
+            </a>
+        </div>
+
+        <div class="guarantee-section">
+            <div class="guarantee-badge">🛡️</div>
+            <h2 style="color: #ffd700; margin-bottom: 20px;">Garantia Incondicional de 7 Dias</h2>
+            <p style="font-size: 1.2em; line-height: 1.8; color: #ffffff;">
+                Experimente o curso por 7 dias completos. Se não ficar satisfeito, 
+                devolvemos 100% do seu investimento sem perguntas. 
+                <strong>O risco é todo nosso!</strong>
+            </p>
+        </div>
+
+        <div class="cta-section">
+            <!-- 🔗 ALTERE O LINK AQUI - Substitua o # pelo seu link de pagamento 🔗 -->
+            <a href="https://pay.kiwify.com.br/obJH06a?afid=a7cTNs9z" class="buy-button" onclick="comprar()">
+                💳 GARANTIR MINHA VAGA AGORA
+            </a>
+        </div>
+
+        <footer>
+            <p>&copy; 2024 YouTuber Profissional. Todos os direitos reservados.</p>
+            <p style="margin-top: 10px; opacity: 0.8;">7 dias de garantia • Suporte exclusivo • Acesso imediato</p>
+        </footer>
+    </div>
+
+    <script>
+        let isMuted = false;
+        
+        // Função para alternar áudio
+        function toggleAudio() {
+            const button = document.getElementById('audioToggle');
+            const iframe = document.getElementById('videoPlayer');
+            
+            isMuted = !isMuted;
+            
+            if (isMuted) {
+                button.textContent = '🔇 Ativar Áudio';
+                button.classList.remove('active');
+                // Recarrega o iframe com mute=1
+                iframe.src = iframe.src.replace('mute=0', 'mute=1');
+            } else {
+                button.textContent = '🔊 Desativar Áudio';
+                button.classList.add('active');
+                // Recarrega o iframe com mute=0
+                iframe.src = iframe.src.replace('mute=1', 'mute=0');
+            }
+        }
+        
+        // 🔗 FUNÇÃO DE COMPRA - ALTERE O LINK AQUI 🔗
+        function comprar() {
+            // Substitua a URL abaixo pelo link do seu checkout/pagamento
+            window.location.href = 'https://pay.kiwify.com.br/obJH06a?afid=a7cTNs9z';
+            
+            // OU se preferir abrir em nova aba, use:
+            // window.open('✅ Um site completo em HTML/CSS''_blank');
+        }
+
+        // Animação suave ao rolar
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if(target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
